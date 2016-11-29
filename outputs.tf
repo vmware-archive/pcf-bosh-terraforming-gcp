@@ -1,7 +1,3 @@
-output "ops_manager_dns" {
-  value = "${google_dns_record_set.ops-manager-dns.name}"
-}
-
 output "sys_domain" {
   value = "sys.${var.env_name}.${var.dns_suffix}"
 }
@@ -12,10 +8,6 @@ output "apps_domain" {
 
 output "tcp_domain" {
   value = "tcp.${var.env_name}.${var.dns_suffix}"
-}
-
-output "ops_manager_public_ip" {
-  value = "${google_compute_instance.ops-manager.network_interface.0.access_config.0.assigned_nat_ip}"
 }
 
 output "env_dns_zone_name_servers" {
@@ -48,22 +40,6 @@ output "network_name" {
 
 output "sql_db_ip" {
   value = "${google_sql_database_instance.master.ip_address.0.ip_address}"
-}
-
-output "ops_manager_gateway" {
-  value = "${google_compute_subnetwork.ops-manager-subnet.gateway_address}"
-}
-
-output "ops_manager_cidr" {
-  value = "${google_compute_subnetwork.ops-manager-subnet.ip_cidr_range}"
-}
-
-output "ops_manager_subnet" {
-  value = "${google_compute_subnetwork.ops-manager-subnet.name}"
-}
-
-output "opsman_sql_db_name" {
-  value = "${google_sql_database.opsman.name}"
 }
 
 output "cf_gateway" {
@@ -108,10 +84,6 @@ output "packages_bucket" {
 
 output "resources_bucket" {
   value = "${google_storage_bucket.resources.name}"
-}
-
-output "director_blobstore_bucket" {
-  value = "${google_storage_bucket.director.name}"
 }
 
 output "ert_sql_username" {
