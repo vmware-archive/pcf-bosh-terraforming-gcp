@@ -19,7 +19,6 @@ resource "google_compute_firewall" "cf-internal" {
   target_tags = ["${var.env_name}-vms"]
 
   source_tags = [
-    "${var.env_name}-vms",                  // Allows VMs deployed by OpsMan to talk to one another
-    "${var.env_name}-ops-manager-external",
-  ] // Allows bosh-init running on the OpsMan VM to SSH to the deployed BOSH Director
+    "${var.env_name}-vms",                  // Allows VMs deployed by bosh to talk to one another
+  ]
 }
