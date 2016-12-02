@@ -32,9 +32,6 @@ gcloud iam service-accounts keys create "terraform.key.json" --iam-account "some
 gcloud projects add-iam-policy-binding PROJECT_ID --member 'serviceAccount:some-account-name@PROJECT_ID.iam.gserviceaccount.com' --role 'roles/editor'
 ```
 
-You will need to enable the [Google Cloud Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/)
-on your GCP account.  The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
-
 You will also need to enable the [Google Cloud DNS API](https://console.developers.google.com/apis/api/dns/overview)
 on your GCP account.  The Google Cloud DNS API provides methods for creating, reading, and updating project DNS entries.
 
