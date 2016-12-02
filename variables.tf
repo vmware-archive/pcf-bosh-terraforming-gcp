@@ -64,3 +64,17 @@ variable "ert_sql_db_password" {
   type    = "string"
   default = ""
 }
+
+/***********************
+ * Optional DNS Config *
+ ***********************/
+
+/* If you have an existing managed zone in Cloud DNS, you can opt in to adding
+ * this environment's NS record to that zone.
+ */
+
+variable "parent_managed_zone" {
+  type = "string"
+  default = ""
+  Description = "Name of managed zone to add this environment's name servers to"
+}

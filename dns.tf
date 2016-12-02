@@ -4,6 +4,19 @@ resource "google_dns_managed_zone" "env_dns_zone" {
   description = "DNS zone for the ${var.env_name} environment"
 }
 
+resource "google_dns_record_set" "env-zone-ns-record" {
+  /* If the parent_managed_zone is non-empty, create this record */
+  count = "${min(length(split("", var.parent_managed_zone)),1)}"
+
+  name       = "${google_dns_managed_zone.env_dns_zone.dns_name}"
+  type       = "NS"
+  ttl        = 300
+
+  managed_zone = "${var.parent_managed_zone}"
+
+  rrdatas = ["${google_dns_managed_zone.env_dns_zone.name_servers}"]
+}
+
 resource "google_dns_record_set" "wildcard-sys-dns" {
   name       = "*.sys.${google_dns_managed_zone.env_dns_zone.dns_name}"
   depends_on = ["google_compute_global_address.cf"]
