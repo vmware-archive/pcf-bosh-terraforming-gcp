@@ -19,6 +19,6 @@ resource "google_compute_firewall" "cf-internal" {
   target_tags = ["${var.env_name}-vms"]
 
   source_tags = [
-    "${var.env_name}-vms",                  // Allows VMs deployed by bosh to talk to one another
+    "${var.env_name}-vms", // Allows VMs deployed by bosh to talk to one another
   ]
 }

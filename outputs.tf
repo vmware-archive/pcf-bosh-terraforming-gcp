@@ -93,3 +93,7 @@ output "ert_sql_username" {
 output "ert_sql_password" {
   value = "${var.ert_sql_db_password}"
 }
+
+output "director_external_ip" {
+  value = "${google_compute_address.bosh-director.address}"
+}
