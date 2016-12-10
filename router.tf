@@ -99,14 +99,14 @@ resource "google_compute_global_forwarding_rule" "cf-http" {
   name       = "${var.env_name}-cf-lb-http"
   ip_address = "${google_compute_global_address.cf.address}"
   target     = "${google_compute_target_http_proxy.http_lb_proxy.self_link}"
-  port_range = "80"
+  port_range = "80-80"
 }
 
 resource "google_compute_global_forwarding_rule" "cf-https" {
   name       = "${var.env_name}-cf-lb-https"
   ip_address = "${google_compute_global_address.cf.address}"
   target     = "${google_compute_target_https_proxy.https_lb_proxy.self_link}"
-  port_range = "443"
+  port_range = "443-443"
 }
 
 // TCP LB for websockets
@@ -125,7 +125,7 @@ resource "google_compute_target_pool" "cf-ws" {
 resource "google_compute_forwarding_rule" "cf-ws-https" {
   name        = "${var.env_name}-cf-ws-https"
   target      = "${google_compute_target_pool.cf-ws.self_link}"
-  port_range  = "443"
+  port_range  = "443-443"
   ip_protocol = "TCP"
   ip_address  = "${google_compute_address.cf-ws.address}"
 }
@@ -133,7 +133,7 @@ resource "google_compute_forwarding_rule" "cf-ws-https" {
 resource "google_compute_forwarding_rule" "cf-ws-http" {
   name        = "${var.env_name}-cf-ws-http"
   target      = "${google_compute_target_pool.cf-ws.self_link}"
-  port_range  = "80"
+  port_range  = "80-80"
   ip_protocol = "TCP"
   ip_address  = "${google_compute_address.cf-ws.address}"
 }
@@ -163,7 +163,7 @@ resource "google_compute_target_pool" "cf-ssh" {
 resource "google_compute_forwarding_rule" "cf-ssh" {
   name        = "${var.env_name}-cf-ssh"
   target      = "${google_compute_target_pool.cf-ssh.self_link}"
-  port_range  = "2222"
+  port_range  = "2222-2222"
   ip_protocol = "TCP"
   ip_address  = "${google_compute_address.cf-ssh.address}"
 }
