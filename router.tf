@@ -10,6 +10,7 @@ resource "google_compute_firewall" "cf-public" {
   }
 
   target_tags = ["${var.env_name}-httpslb", "${var.env_name}-cf-ws"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_global_address" "cf" {
@@ -150,6 +151,7 @@ resource "google_compute_firewall" "cf-ssh" {
   }
 
   target_tags = ["${var.env_name}-cf-ssh"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_address" "cf-ssh" {

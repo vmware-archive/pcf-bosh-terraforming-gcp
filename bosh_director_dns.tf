@@ -25,4 +25,5 @@ resource "google_compute_firewall" "bosh-director" {
   }
 
   target_tags = ["${var.env_name}-director"]
+  source_ranges = ["0.0.0.0/0"]
 }
