@@ -47,13 +47,13 @@ zones = ["us-central1-a", "us-central1-b", "us-central1-c"]
 project = "your-gcp-project"
 dns_suffix = "gcp.some-project.cf-app.com"
 ssl_cert = "-----BEGIN CERTIFICATE-----some cert-----END CERTIFICATE-----\n"
-ssl_cert_private_key = "-----BEGIN RSA PRIVATE KEY-----some cert private key-----END RSA PRIVATE KEY-----\n"
+ssl_cert_private_key = "-----BEGIN RSA PRIVATE KEY-----fake private key-----END RSA PRIVATE KEY-----\n"
 service_account_key = <<SERVICE_ACCOUNT_KEY
 {
   "type": "service_account",
   "project_id": "your-gcp-project",
   "private_key_id": "another-gcp-private-key",
-  "private_key": "-----BEGIN PRIVATE KEY-----another gcp private key-----END PRIVATE KEY-----\n",
+  "private_key": "-----BEGIN PRIVATE KEY-----fake gcp private key-----END PRIVATE KEY-----\n",
   "client_email": "something@example.com",
   "client_id": "11111111111111",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
