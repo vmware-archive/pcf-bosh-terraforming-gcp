@@ -76,5 +76,5 @@ variable "ert_sql_db_password" {
 variable "parent_managed_zone" {
   type = "string"
   default = ""
-  Description = "Name of managed zone to add this environment's name servers to"
+  description = "Name of managed zone to add this environment's name servers to"
 }
