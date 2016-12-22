@@ -10,6 +10,10 @@ output "tcp_domain" {
   value = "tcp.${var.env_name}.${var.dns_suffix}"
 }
 
+output "bosh_director_domain" {
+  value = "${google_dns_record_set.bosh-director-dns.name}"
+}
+
 output "env_dns_zone_name_servers" {
   value = "${google_dns_managed_zone.env_dns_zone.name_servers}"
 }
@@ -32,6 +36,10 @@ output "service_account_key" {
 
 output "cf_internal_tags" {
   value = "${google_compute_firewall.cf-internal.target_tags}"
+}
+
+output "bosh_director_tags" {
+  value = "${concat(google_compute_firewall.cf-internal.target_tags, google_compute_firewall.bosh-director.target_tags)}"
 }
 
 output "cf_public_tags" {
