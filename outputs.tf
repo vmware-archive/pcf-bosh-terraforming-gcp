@@ -30,8 +30,20 @@ output "service_account_key" {
   value = "${var.service_account_key}"
 }
 
-output "vm_tag" {
-  value = "${var.env_name}-vms"
+output "cf_internal_tags" {
+  value = "${google_compute_firewall.cf-internal.target_tags}"
+}
+
+output "cf_public_tags" {
+  value = "${google_compute_firewall.cf-public.target_tags}"
+}
+
+output "cf_tcp_tags" {
+  value = "${google_compute_firewall.cf-tcp.target_tags}"
+}
+
+output "cf_ssh_tags" {
+  value = "${google_compute_firewall.cf-ssh.target_tags}"
 }
 
 output "network_name" {
@@ -100,4 +112,22 @@ output "ert_sql_password" {
 
 output "director_external_ip" {
   value = "${google_compute_address.bosh-director.address}"
+}
+
+# TEMPORARY: IP ranges will be removed when cf-deployment uses more links
+
+output "cf_reserved_ips" {
+  value = [
+    "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 2)}",
+    "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 3)}",
+    "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 255)}",
+  ]
+}
+
+output "cf_static_ip_start" {
+  value = "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 190)}"
+}
+
+output "cf_static_ip_end" {
+  value = "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 254)}"
 }
