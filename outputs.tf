@@ -128,6 +128,7 @@ output "cf_reserved_ips" {
   value = [
     "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 2)}",
     "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 3)}",
+    "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 254)}",
     "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 255)}",
   ]
 }
@@ -137,5 +138,5 @@ output "cf_static_ip_start" {
 }
 
 output "cf_static_ip_end" {
-  value = "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 254)}"
+  value = "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 253)}"
 }
