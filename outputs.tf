@@ -50,6 +50,10 @@ output "cf_cidr" {
   value = "${google_compute_subnetwork.cf-subnet.ip_cidr_range}"
 }
 
+output "cf_director_internal_ip" {
+  value = "${cidrhost(google_compute_subnetwork.cf-subnet.ip_cidr_range, 3)}"
+}
+
 output "cf_subnet" {
   value = "${google_compute_subnetwork.cf-subnet.name}"
 }
