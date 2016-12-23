@@ -1,5 +1,5 @@
 resource "google_compute_address" "bosh-director" {
-  name = "bosh-director"
+  name = "${var.env_name}-bosh-director"
 }
 
 resource "google_dns_record_set" "bosh-director-dns" {
