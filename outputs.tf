@@ -62,6 +62,10 @@ output "sql_db_ip" {
   value = "${google_sql_database_instance.master.ip_address.0.ip_address}"
 }
 
+output "sql_db_root_password" {
+  value = "${google_sql_user.root.password}"
+}
+
 output "cf_gateway" {
   value = "${google_compute_subnetwork.cf-subnet.gateway_address}"
 }
